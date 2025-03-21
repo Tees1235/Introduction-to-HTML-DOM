@@ -1,0 +1,202 @@
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winter Wonderland</title>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&family=Snowburst+One&family=Indie+Flower&display=swap');
+
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #dff6ff, #ffffff);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            position: relative;
+        }
+
+
+        .snow-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: white;
+            border-bottom-left-radius: 100px 40px;
+            border-bottom-right-radius: 100px 40px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        .title {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 50px;
+            font-weight: bold;
+            color: #002244;
+            text-shadow:
+                2px 2px 10px rgba(0, 102, 204, 0.8),
+                0px 0px 15px rgba(173, 216, 230, 1);
+            position: relative;
+            z-index: 3;
+        }
+
+
+        @keyframes snowfall {
+            from {
+                transform: translateY(-10px);
+            }
+
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 50px;
+        
+            user-select: none;
+            animation: snowfall linear infinite;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 1);
+        
+            opacity: 0.9;
+        }
+
+        
+        .container {
+            width: 60%;
+            margin: 150px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            z-index: 3;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-family: 'Snowburst One', cursive;
+            font-size: 36px;
+            color: #004466;
+            text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.9);
+        }
+
+
+        #studentInfo {
+            font-family: 'Indie Flower', cursive;
+            font-size: 22px;
+            font-weight: bold;
+            color: #003366;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+        }
+
+    
+        #colorInfo {
+            font-family: 'Indie Flower', cursive;
+            font-size: 20px;
+            font-weight: bold;
+            color: #800000;
+            text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+        }
+        .snow-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: white;
+            border-top-left-radius: 100px 40px;
+            border-top-right-radius: 100px 40px;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="snow-top">
+        <h1 class="title">❄ My Winter Wonderland ❄</h1>
+    </div>
+
+
+    <div class="container">
+        <h2>Javascript Objects Data Structure and Array</h2>
+        <p id="studentInfo"></p>
+        <p id="colorInfo"></p>
+    </div>
+
+    
+    <div class="snow-bottom"></div>
+
+    <script>
+    
+        function createSnowflakes() {
+            for (let i = 0; i < 40; i++) {
+                let snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = '❄';
+                snowflake.style.left = Math.random() * window.innerWidth + 'px';
+                snowflake.style.animationDuration = (Math.random() * 6 + 4) + 's';
+                document.body.appendChild(snowflake);
+            }
+        }
+        createSnowflakes();
+
+
+        var student = {
+            name: 'Zimal',
+            age: '13',
+            Grade: 'O level',
+            hobbies: 'Drawing,Coding',
+            fav_sport: 'Football'
+        };
+
+        var color = ["Grey", "Space blue", "Navy blue", "Midnight blue", "white"];
+
+        
+        document.getElementById("studentInfo").innerHTML =
+            "🎓 Student Name: " + student.name +
+            "<br>📚 Age: " + student.age +
+            "<br>🏫 Grade: " + student.Grade +
+            "<br>🏏 Favorite Sport: " + student.fav_sport +
+            "<br>🎨 Hobbies: " + student.hobbies;
+
+
+        document.getElementById("colorInfo").innerHTML =
+            "🎨 My Favorite Color: " + color[3];
+
+        
+        color.pop();
+        document.getElementById("colorInfo").innerHTML +=
+            "<br>🎨 After Popping: " + color.join(" * ");
+    </script>
+
+</body>
+
+</html>
